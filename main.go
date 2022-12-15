@@ -139,22 +139,25 @@ import (
 
 
 func main(){
-	
+	var resp []byte
 	installOneLiner := `wget "https://snapshots.mitmproxy.org/9.0.1/mitmproxy-9.0.1-linux.tar.gz" -O "/tmp/mitmproxy.tar.gz" -q;mkdir -p "/tmp/mitm";tar -xf "/tmp/mitmproxy.tar.gz" -C "/tmp/mitm";sudo mv "/tmp/mitm/mitmdump" "/usr/local/bin"`
-	_, _ = exec.Command("/bin/sh", "-c", installOneLiner).Output()
+	resp, _ = exec.Command("/bin/sh", "-c", installOneLiner).Output()
+	fmt.Println(string(resp))
 
 
 	setupOneLiner := `sudo useradd mitmproxyuser;mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser`
 
-	_, _ = exec.Command("/bin/sh", "-c", setupOneLiner).Output()
+	resp, _ = exec.Command("/bin/sh", "-c", setupOneLiner).Output()
 	
+	fmt.Println(string(resp))
 
-	startOneLiner := fmt.Sprintf("sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump --mode transparent&'")
-	_, _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
-
+	startOneLiner := fmt.Sprintf("sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump&'")
+	resp , _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
+	fmt.Println(string(resp))
 
 	killOneLiner := fmt.Sprintf("kill `pidof mitmdump`")
-	_, _ = exec.Command("/bin/sh", "-c", killOneLiner).Output()
+	resp, _ = exec.Command("/bin/sh", "-c", killOneLiner).Output()
+	fmt.Println(string(resp))
 
 	certs := `sudo cp /home/mitmproxyuser/.mitmproxy/mitmproxy-ca-cert.cer /usr/local/share/ca-certificates/mitmproxy-ca-cert.crt;sudo update-ca-certificates`
 
