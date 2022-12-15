@@ -139,7 +139,7 @@ import (
 
 
 func main(){
-	var resp []byte
+	// var resp []byte
 	// installOneLiner := `wget "https://snapshots.mitmproxy.org/9.0.1/mitmproxy-9.0.1-linux.tar.gz" -O "/tmp/mitmproxy.tar.gz" -q;mkdir -p "/tmp/mitm";tar -xf "/tmp/mitmproxy.tar.gz" -C "/tmp/mitm";sudo mv "/tmp/mitm/mitmdump" "/usr/local/bin"`
 	// resp, _ = exec.Command("/bin/sh", "-c", installOneLiner).Output()
 	// fmt.Println(string(resp))
