@@ -18,9 +18,9 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.19
-    # - run: wget "https://snapshots.mitmproxy.org/9.0.1/mitmproxy-9.0.1-linux.tar.gz" -O "/tmp/mitmproxy.tar.gz" -q;mkdir -p "/tmp/mitm";tar -xf "/tmp/mitmproxy.tar.gz" -C "/tmp/mitm";sudo mv "/tmp/mitm/mitmdump" "/usr/local/bin"
-    # - run: sudo useradd mitmproxyuser;sudo mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser
-    # - run: sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump --mode transparent&'
+    - run: wget "https://snapshots.mitmproxy.org/9.0.1/mitmproxy-9.0.1-linux.tar.gz" -O "/tmp/mitmproxy.tar.gz" -q;mkdir -p "/tmp/mitm";tar -xf "/tmp/mitmproxy.tar.gz" -C "/tmp/mitm";sudo mv "/tmp/mitm/mitmdump" "/usr/local/bin"
+    - run: sudo useradd mitmproxyuser;sudo mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser
+    - run: sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump --mode transparent&'
     - name: Run
       run: go run main.go
     - run: sudo kill `pidof mitmdump`
