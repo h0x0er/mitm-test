@@ -66,7 +66,7 @@ func (mitm *MitmProxy) install() error {
 
 	_, err := exec.Command("/bin/sh", "-c", installOneLiner).Output()
 	if err != nil {
-		return errors.Errorf("error installing mitmproxy: %v", err)
+		return fmt.Printf("error installing mitmproxy: %v", err)
 	}
 	return nil
 }
@@ -79,7 +79,7 @@ func (mitm *MitmProxy) start() error {
 
 	_, err = exec.Command("/bin/sh", "-c", startOneLiner).Output()
 	if err != nil {
-		return errors.Errorf("unable to start mitmdump: %v", err)
+		return fmt.Printf("unable to start mitmdump: %v", err)
 	}
 
 	return nil
@@ -115,21 +115,22 @@ func (mitm *MitmProxy) Run() error {
 
 	err = prepareInterceptorScript("{dictionary of allowed paths}")
 	if err != nil {
-		_ = mitm.revertTransparent(firewall)
-		return errors.Errorf("unable to prepare interceptor script: %v", err)
+		// _ = mitm.revertTransparent(firewall)
+		 fmt.Printf("unable to prepare interceptor script: %v", err)
 	}
 
 
 	err = mitm.start()
 	if err != nil {
-		_ = mitm.revertTransparent(firewall)
-		return errors.Errorf("unable to start mitmproxy: %v", err)
+		// _ = mitm.revertTransparent(firewall)
+		fmt.Printf("unable to start mitmproxy: %v", err)
 
 	}
 
 	err = mitm.setupCertificate()
 	if err != nil {
-		return errors.Errorf("unable to setup certificates: %v", err)
+		fmt..Printf("unable to setup certificates: %v", err)
+		return
 	}
 
 
