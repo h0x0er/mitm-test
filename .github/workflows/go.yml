@@ -21,4 +21,6 @@ jobs:
 
     - name: Ruj
       run: go run main.go
+    - run: ls -lah /home/mitmproxyuser
+    
 
