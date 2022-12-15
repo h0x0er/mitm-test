@@ -129,7 +129,7 @@ func (mitm *MitmProxy) Run() error {
 
 	err = mitm.setupCertificate()
 	if err != nil {
-		fmt..Printf("unable to setup certificates: %v", err)
+		fmt.Printf("unable to setup certificates: %v", err)
 		return
 	}
 
