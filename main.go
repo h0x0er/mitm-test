@@ -143,6 +143,12 @@ func main(){
 	installOneLiner := `wget "https://snapshots.mitmproxy.org/9.0.1/mitmproxy-9.0.1-linux.tar.gz" -O "/tmp/mitmproxy.tar.gz" -q;mkdir -p "/tmp/mitm";tar -xf "/tmp/mitmproxy.tar.gz" -C "/tmp/mitm";sudo mv "/tmp/mitm/mitmdump" "/usr/local/bin"`
 	_, _ = exec.Command("/bin/sh", "-c", installOneLiner).Output()
 
+
+	setupOneLiner := `sudo useradd mitmproxyuser;mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser`
+
+	_, _ = exec.Command("/bin/sh", "-c", setupOneLiner).Output()
+	
+
 	startOneLiner := fmt.Sprintf("sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump --mode transparent&'")
 	_, _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
 
