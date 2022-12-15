@@ -149,7 +149,7 @@ func main(){
 	_, _ = exec.Command("/bin/sh", "-c", setupOneLiner).Output()
 	
 
-	startOneLiner := fmt.Sprintf("sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump&'")
+	startOneLiner := fmt.Sprintf("sudo -u mitmproxyuser -H sh -c '/usr/local/bin/mitmdump --mode transparent&'")
 	_, _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
 
 
