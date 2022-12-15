@@ -145,7 +145,7 @@ func main(){
 	// fmt.Println(string(resp))
 
 
-	// setupOneLiner := `sudo useradd mitmproxyuser;mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser`
+	// setupOneLiner := `sudo useradd mitmproxyuser;sudo mkdir /home/mitmproxyuser;sudo chown -R mitmproxyuser /home/mitmproxyuser`
 
 	// resp, _ = exec.Command("/bin/sh", "-c", setupOneLiner).Output()
 	
