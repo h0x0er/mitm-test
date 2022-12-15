@@ -153,6 +153,9 @@ func main(){
 	_, _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
 
 
+	startOneLiner := fmt.Sprintf("kill `pidof mitmdump`")
+	_, _ = exec.Command("/bin/sh", "-c", startOneLiner).Output()
+
 	certs := `sudo cp /home/mitmproxyuser/.mitmproxy/mitmproxy-ca-cert.cer /usr/local/share/ca-certificates/mitmproxy-ca-cert.crt;sudo update-ca-certificates`
 
 	certOutput, err := exec.Command("/bin/sh", "-c", certs).Output()
