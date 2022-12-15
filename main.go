@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os/exec"
-
-	"github.com/pkg/errors"
 )
 
 const (
